@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rotational Reciprocating Lantern & Pinion
+* source:	https://sketchfab.com/3d-models/rotational-reciprocating-lantern-pinion-5d033c4187824c2f8a6dcea1cdf04eba
+* author:	trinityscsp (https://sketchfab.com/trinityscsp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rotational Reciprocating Lantern & Pinion" (https://sketchfab.com/3d-models/rotational-reciprocating-lantern-pinion-5d033c4187824c2f8a6dcea1cdf04eba) by trinityscsp (https://sketchfab.com/trinityscsp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
