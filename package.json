@@ -39,5 +39,16 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@react-three/drei": "^4.1.8",
+    "@react-three/fiber": "^6.0.16",
+    "@types/three": "^0.127.1",
+    "drei": "^2.2.21",
+    "gsap": "^3.6.1",
+    "jsdom-quokka-plugin": "^1.0.16",
+    "node-sass": "^5.0.0",
+    "react-gsap": "^3.2.1",
+    "three": "^0.127.0"
   }
 }
