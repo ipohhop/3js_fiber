@@ -2,10 +2,8 @@
 import * as THREE from 'three'
 import React, {useEffect, useState, Dispatch, SetStateAction, useRef, FunctionComponent} from 'react'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
-import {useFrame} from "@react-three/fiber";
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
-import {Group} from "three";
-import {useAnimations} from "@react-three/drei";
+
 
 interface OwnProps {
 }
