@@ -5,7 +5,7 @@ import {OrbitControls} from "@react-three/drei";
 
 
 // local
-import Model from "../elements/Robot";
+import Robot from "../elements/Robot";
 
 
 
@@ -19,7 +19,7 @@ const RobotCanvas: FunctionComponent<Props> = (props) => {
       <Canvas className="canvas" style={{height: "600px"}} >
           <OrbitControls/>
           <ambientLight intensity={0.5}/>
-          <Model/>
+          <Robot/>
       </Canvas>
   );
 };

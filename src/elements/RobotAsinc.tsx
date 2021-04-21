@@ -12,10 +12,16 @@ interface OwnProps {
 
 type Props = OwnProps;
 
-const Robot: FunctionComponent<Props> = (props) => {
+const RobotAsinc: FunctionComponent<Props> = (props) => {
 
     const mesh = useRef()
+
+
+
     const [model, setModel] = useState(new THREE.Group()) as [THREE.Group, Dispatch<SetStateAction<THREE.Group>>];
+    const [animation, setAnimation] = useState() as [THREE.AnimationClip[],Dispatch<SetStateAction<THREE.AnimationClip[]>>];
+
+    // const { ref, mixer, names, actions, clips } = useAnimations(animation)
 
     useEffect(() => {
         const loader = new GLTFLoader();
@@ -28,7 +34,7 @@ const Robot: FunctionComponent<Props> = (props) => {
                 const robot = gltf.scene
                 robot.animations = gltf.animations
                 console.log(robot)
-
+            setAnimation(gltf.animations)
                 setModel(robot)
             },
             undefined,
@@ -37,15 +43,26 @@ const Robot: FunctionComponent<Props> = (props) => {
             })
     }, [])
 
-    return (
-        <primitive
-            ref={mesh}
-            scale={"0.08"}
-            object={model}
-        />
-    );
+    useEffect(()=>{
+
+    },[])
+
+    useFrame(() => {
+
+    })
+
+    // if (model) {
+        return (
+            <primitive
+                ref={mesh}
+                scale={"0.08"}
+                object={model}
+            />
+        );
+    // }
+    // return null
 
 }
 
 
-export default Robot
+export default RobotAsinc
