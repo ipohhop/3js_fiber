@@ -5,7 +5,7 @@ import React from 'react';
 // local
 import './App.css';
 import BoxesBlock from "./components/BoxesBlock";
-import Model from "./elements/Robot";
+import RobotCanvas from "./components/RobotCanvas";
 
 
 
@@ -13,7 +13,7 @@ function App() {
     return (
         <div className="App">
             <BoxesBlock/>
-            <Model/>
+            <RobotCanvas/>
 
         </div>
     );

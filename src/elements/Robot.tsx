@@ -1,50 +1,67 @@
+// outer
 import * as THREE from 'three'
 import React, {useEffect, useState, Dispatch, SetStateAction, useRef, FunctionComponent} from 'react'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
-import {Canvas, useFrame} from "@react-three/fiber";
+import {useFrame} from "@react-three/fiber";
+import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
+import {Group} from "three";
+import {useAnimations} from "@react-three/drei";
 
-import {OrbitControls} from "@react-three/drei"
-interface OwnProps {}
+interface OwnProps {
+}
 
 type Props = OwnProps;
 
 const Model: FunctionComponent<Props> = (props) => {
 
-    const [model, setModel] = useState() as unknown as [THREE.Group, Dispatch<SetStateAction<THREE.Group>>];
+    const mesh = useRef()
 
-    const robot = useRef()
 
+
+    const [model, setModel] = useState(new THREE.Group()) as [THREE.Group, Dispatch<SetStateAction<THREE.Group>>];
+    const [animation, setAnimation] = useState() as [THREE.AnimationClip[],Dispatch<SetStateAction<THREE.AnimationClip[]>>];
+
+    // const { ref, mixer, names, actions, clips } = useAnimations(animation)
 
     useEffect(() => {
         const loader = new GLTFLoader();
+        const dracoLoader = new DRACOLoader();
+
+        dracoLoader.setDecoderPath('../node_modules/three/examples/js/libs/draco');
+        loader.setDRACOLoader(dracoLoader);
+
         loader.load("models/robot/scene.gltf", function (gltf) {
-            setModel(gltf.scene)
-        }, undefined, function (error) {
-            console.error(error)
-        })
+                const robot = gltf.scene
+                robot.animations = gltf.animations
+                console.log(robot)
+            setAnimation(gltf.animations)
+                setModel(robot)
+            },
+            undefined,
+            function (error) {
+                console.error(error)
+            })
     }, [])
 
-    // useFrame(() => {
-        // @ts-ignore
-        // robot.current.rotation.x = robot.current.rotation.y += 0.01
-    // },1)
+    useEffect(()=>{
 
+    },[])
 
-    return (
-        <>
-            <Canvas className="canvas" style={{height: "600px"}}>
+    useFrame(() => {
 
-                <OrbitControls/>
-                <ambientLight intensity={0.5}/>
-                {model && <primitive
-                    ref = {robot}
-                    scale={"0.08"}
-                    object={model}
-                    />}
+    })
 
-            </Canvas>
-        </>
-    )
+    // if (model) {
+        return (
+            <primitive
+                ref={mesh}
+                scale={"0.08"}
+                object={model}
+            />
+        );
+    // }
+    // return null
+
 }
 
 
