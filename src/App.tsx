@@ -8,6 +8,7 @@ import BoxesBlock from "./components/BoxesBlock";
 import RobotCanvas from "./components/RobotCanvas";
 import RobotAsincSuspense from "./elements/RobotAsincSuspense";
 import {Canvas} from "@react-three/fiber";
+import ModelCanvas from "./components/ModelCanvas";
 
 
 
@@ -16,9 +17,11 @@ import {Canvas} from "@react-three/fiber";
 function App() {
     return (
         <div className="App">
-            <BoxesBlock/>
-            <RobotCanvas/>
+            {/*<BoxesBlock/>*/}
+            {/*<RobotCanvas/>*/}
             <RobotAsincSuspense/>
+
+            {/*<ModelCanvas/>*/}
         </div>
     );
 }

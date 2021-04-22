@@ -6,9 +6,6 @@ import {OrbitControls} from "@react-three/drei";
 
 // local
 import Robot from "../elements/Robot";
-import RobotAsinc from "../elements/RobotAsinc";
-import RobotAsincSuspense from "../elements/RobotAsincSuspense";
-
 
 
 interface OwnProps {}
@@ -18,7 +15,7 @@ type Props = OwnProps;
 const RobotCanvas: FunctionComponent<Props> = (props) => {
 
   return (
-      <Canvas className="canvas" style={{height: "600px"}} >
+      <Canvas className="canvas" style={{height: "700px",width:"700px"}} >
           <OrbitControls/>
           <ambientLight intensity={0.5}/>
           <Robot/>

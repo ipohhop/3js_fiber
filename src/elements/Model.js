@@ -5,10 +5,13 @@ import { a, useSpring } from "@react-spring/three"
 
 export default function Model(props) {
   // Fetch model and a separate texture
-  const { nodes, animations } = useGLTF("/stacy.glb")
-  const texture = useTexture("/stacy.jpg")
+  const { nodes, animations } = useGLTF("models/stacy/stacy.glb")
+  const texture = useTexture("models/stacy/stacy.jpg")
   // Extract animation actions
   const { ref, actions, names } = useAnimations(animations)
+
+  console.log("madama:", nodes)
+
   // Hover and animation-index states
   const [hovered, setHovered] = useState(false)
   const [index, setIndex] = useState(4)

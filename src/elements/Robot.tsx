@@ -22,9 +22,10 @@ const Robot: FunctionComponent<Props> = (props) => {
         loader.setDRACOLoader(dracoLoader);
 
         loader.load("models/robot/scene.gltf", function (gltf) {
+                console.log(gltf)
                 const robot = gltf.scene
                 robot.animations = gltf.animations
-                console.log(robot)
+                // console.log(robot)
 
                 setModel(robot)
             },

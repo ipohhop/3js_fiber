@@ -1,7 +1,8 @@
 import * as THREE from "three"
 import React, { Suspense } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import Model from "./Model"
+import Model from "../elements/Model";
+
 
 function Rig() {
   return useFrame((state) => {
@@ -10,7 +11,7 @@ function Rig() {
   })
 }
 
-export default function App() {
+export default function ModelCanvas() {
   return (
     <Canvas concurrent shadowMap camera={{ position: [1, 1.5, 2.5], fov: 50 }}>
       <ambientLight />

@@ -1,52 +1,29 @@
 // outer
-import * as THREE from 'three'
-import React, {useEffect, useState, Dispatch, SetStateAction, useRef, FunctionComponent} from 'react'
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
-import {useFrame} from "@react-three/fiber";
-import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
-import {Group} from "three";
+import React, {useEffect, FunctionComponent} from 'react'
 import {useAnimations, useGLTF} from "@react-three/drei";
 
-interface OwnProps {
-}
+
+interface OwnProps {}
 
 type Props = OwnProps;
 
 const RobotAsinc: FunctionComponent<Props> = (props) => {
 
-    const mesh = useRef()
-
-    let animation
-
     const { nodes,animations } = useGLTF("models/robot/scene.gltf",'/draco-gltf/')
+    const { ref, actions, names } = useAnimations(animations)
 
+    useEffect(() => {
+        actions["Take 001"].reset().fadeIn(0.5).play()
+    }, [ actions, names])
 
-
-    const { ref, mixer, names, actions, clips } = useAnimations(animations)
-
-
-
-    useEffect(()=>{
-        console.log(nodes)
-
-        // @ts-ignore
-        mesh.current.object = nodes
-    },[])
-
-    useFrame(() => {
-
-    })
-
-    // if (model) {
-        return (
-            <primitive
-                ref={mesh}
-                scale={"0.08"}
-                object={nodes}
-            />
-        );
-    // }
-    // return null
+    return (
+        <group ref={ref} {...props} dispose={null}>
+                <primitive
+                    rotation={[0.4,0,0]}
+                    scale={"0.08"}
+                    object={nodes["000846fff9e546569ee038af7e24655afbx"]} />
+        </group>
+    )
 
 }
 
