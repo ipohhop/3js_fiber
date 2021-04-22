@@ -5,7 +5,7 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
 import {useFrame} from "@react-three/fiber";
 import {DRACOLoader} from "three/examples/jsm/loaders/DRACOLoader";
 import {Group} from "three";
-import {useAnimations} from "@react-three/drei";
+import {useAnimations, useGLTF} from "@react-three/drei";
 
 interface OwnProps {
 }
@@ -16,35 +16,21 @@ const RobotAsinc: FunctionComponent<Props> = (props) => {
 
     const mesh = useRef()
 
+    let animation
+
+    const { nodes,animations } = useGLTF("models/robot/scene.gltf",'/draco-gltf/')
 
 
-    const [model, setModel] = useState(new THREE.Group()) as [THREE.Group, Dispatch<SetStateAction<THREE.Group>>];
-    const [animation, setAnimation] = useState() as [THREE.AnimationClip[],Dispatch<SetStateAction<THREE.AnimationClip[]>>];
 
-    // const { ref, mixer, names, actions, clips } = useAnimations(animation)
+    const { ref, mixer, names, actions, clips } = useAnimations(animations)
 
-    useEffect(() => {
-        const loader = new GLTFLoader();
-        const dracoLoader = new DRACOLoader();
 
-        dracoLoader.setDecoderPath('../node_modules/three/examples/js/libs/draco');
-        loader.setDRACOLoader(dracoLoader);
-
-        loader.load("models/robot/scene.gltf", function (gltf) {
-                const robot = gltf.scene
-                robot.animations = gltf.animations
-                console.log(robot)
-            setAnimation(gltf.animations)
-                setModel(robot)
-            },
-            undefined,
-            function (error) {
-                console.error(error)
-            })
-    }, [])
 
     useEffect(()=>{
+        console.log(nodes)
 
+        // @ts-ignore
+        mesh.current.object = nodes
     },[])
 
     useFrame(() => {
@@ -56,7 +42,7 @@ const RobotAsinc: FunctionComponent<Props> = (props) => {
             <primitive
                 ref={mesh}
                 scale={"0.08"}
-                object={model}
+                object={nodes}
             />
         );
     // }

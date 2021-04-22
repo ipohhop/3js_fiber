@@ -41,6 +41,7 @@
     ]
   },
   "devDependencies": {
+    "@react-spring/three": "^9.1.2",
     "@react-three/drei": "^4.1.8",
     "@react-three/fiber": "^6.0.16",
     "@types/three": "^0.127.1",
